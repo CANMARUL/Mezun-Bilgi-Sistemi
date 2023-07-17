@@ -1,0 +1,54 @@
+﻿@using EntityLayer.Concrete
+@model List<BasvuruYapanlar>
+@{
+    ViewBag.Title = "Başvuru";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>BAŞVURU YAPAN ÖĞRENCİLER</h2>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Email</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Bölüm</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BasvuranEmail</td>
+                <td>@item.BasvuranName</td>
+                <td>@item.BasvuranLastName</td>
+                <td>@item.BasvuranDepartment</td>
+                <td>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#basvuruModal" onclick="acceptApplication('@item.BasvuranEmail')">Kabul Et</a>
+                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#basvuruModal" onclick="rejectApplication('@item.BasvuranEmail')">Reddet</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function acceptApplication(email) {
+        // Başvuru kabul edildiğinde yapılması gereken işlemler
+
+        // Örneğin, başka bir sayfaya yönlendirme işlemi yapabilirsiniz
+       window.location.href = "@Url.Action("NewHomePage", "Home")" + "?message=BAŞVURUNUZ KABUL EDİLMİŞTİR";
+    }
+
+    function rejectApplication(email) {
+        // Başvuru reddedildiğinde yapılması gereken işlemler
+        alert("Başvurunuz reddedilmiştir.");
+    }
+</script>
+
+<style>
+    .table-bordered tbody tr:nth-of-type(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+

@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.Register
+@{
+    ViewBag.Title = "UpdateRegister";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("UpdateRegister", "Admin", FormMethod.Post))
+{
+    @Html.Label("Kullanıcı ID");
+    @Html.TextBoxFor(m => m.registerId, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kullanıcı İSİM");
+    @Html.TextBoxFor(m => m.registerName, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Kullanıcı Soyad");
+    @Html.TextBoxFor(m => m.resigterLastName, new { @class = "form-control" });
+
+    <br />
+    @Html.Label("Kullanıcı Email");
+    @Html.TextBoxFor(m => m.registerEmail, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(m => m.registerPassword, new { @class = "form-control" });
+    <br />
+
+
+    <button class="btn btn-primary">Güncelle</button>
+}
+

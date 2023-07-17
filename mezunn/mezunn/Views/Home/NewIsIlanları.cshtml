@@ -1,0 +1,247 @@
+﻿@using EntityLayer.Concrete
+@model List<IsIlanlari>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>İş İlanları</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+   
+    <header>
+        <a href="/Home/NewHomePage" class="btn btn-primary header-button">Ana Sayfa</a>
+        <h3 class="header-title">Mezun Bilgi Sistemi-İş İlanları</h3>
+
+    </header>
+    <div class="container">
+
+
+        <br><br>
+        <table class="table table-bordered custom-table">
+            <thead>
+                <tr>
+                    <th>Pozisyon</th>
+                    <th>Şirket Adı</th>
+                    <th>Açıklama</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.pozision</td>
+                        <td>@item.CompanyName</td>
+                        <td>@item.Description</td>
+                        <td>
+                            <a href="" class="btn btn-danger" data-toggle="modal" data-target="#basvuruModal">Başvuru Yap</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+        <div class="modal fade" id="basvuruModal" tabindex="-1" role="dialog" aria-labelledby="basvuruModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="basvuruModalLabel">Başvuru Yap</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="modal-body">
+                            <form action="#" class="signup-form" method="post" onsubmit="return validateForm()">
+                                <div class="form-group mb-3">
+                                    <label class="label">Email </label>
+                                    <input type="text" class="form-control" name="BasvuranEmail" placeholder="Email" value="@Session["Kullanici"].ToString() " required>
+                                    <span class="icon fa fa-paper-plane-o"></span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="label">AD</label>
+                                    <input type="text" class="form-control" name="BasvuranName" placeholder="Ad" required>
+                                    <span class="icon fa fa-user-o"></span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="label">SOYAD</label>
+                                    <input type="text" class="form-control" name="BasvuranLastName" placeholder="Soyad" required>
+                                    <span class="icon fa fa-user-o"></span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="label">Bölüm</label>
+                                    <input type="text" class="form-control" name="BasvuranDepartment" placeholder="Bölüm" required>
+                                    <span class="icon fa fa-paper-plane-o"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="form-control btn btn-primary submit px-3">Başvur</button>
+                                </div>
+                                <div> <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button></div>
+                                <br />
+                                <div class="validation-summary">
+
+                                </div>
+
+                            </form>
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #9BABB8;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+       
+    }
+
+    .header-title {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .header-button {
+        margin-right: auto;
+    }
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .custom-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .custom-table td, .custom-table th {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .custom-table a.btn {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+            .custom-table a.btn:hover {
+                background-color: #c82333;
+            }
+           
+
+.container {
+   margin: 20px auto;
+   max-width: 800px;
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 4px;
+   box-shadow: 0 0 5px rgb(0 148 255); /* Sayfa gölge efekti */
+}
+    
+
+    .container {
+        margin: 20px auto;
+        max-width: 800px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .custom-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            padding: 12px 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .custom-table td {
+            padding: 12px 8px;
+            border: 1px solid #ccc;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .custom-table a.btn {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+            .custom-table a.btn:hover {
+                background-color: #c82333;
+            }
+    .container {
+        margin: 20px auto;
+        max-width: 800px;
+        background-color: #f5f5f5; /* Konteyner arka plan rengi */
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgb(0 38 255);
+    }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: cadetblue; /* Tablo arka plan rengi */
+    }
+
+</style>
+ 

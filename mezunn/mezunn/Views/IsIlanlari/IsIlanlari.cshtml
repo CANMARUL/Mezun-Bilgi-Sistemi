@@ -1,0 +1,115 @@
+﻿@using EntityLayer.Concrete
+@model IsIlanlari
+@{
+    ViewBag.Title = "IsIlanlari";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "IsIlanlari";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>İş İlanları</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button[type="submit"]:hover {
+               color:black
+            }
+
+        #ilan-listesi {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            #ilan-listesi li {
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+                padding: 10px;
+            }
+
+            #ilan-listesi h3 {
+                margin-top: 0;
+                color: #ff6a00;
+            }
+
+            #ilan-listesi p {
+                color: #666;
+            }
+            .form-control{
+                color:aquamarine    
+            }
+    </style>
+</head>
+<body>
+    <h1>İş İlanları</h1>
+
+    @using (Html.BeginForm("IsIlanlari", "IsIlanlari", FormMethod.Post))
+    {
+
+
+
+        @Html.Label("Pozisyon")
+        @Html.TextBoxFor(m => m.pozision, new { @class = "form-control", placeholder = "posizyon" })
+
+        @Html.Label("Sirket")
+        @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", placeholder = "şirket" })
+
+
+        @Html.Label("Açıklama")
+        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Açıklama" })
+
+        <button type="submit">İlan Ekle</button>
+    }
+
+    
+    
+
+    
+    
+
+
+</body>
+</html>
+
+
+
+
+

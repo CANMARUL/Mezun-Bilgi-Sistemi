@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model List<Employer>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetEmployerList</title>
+</head>
+<body>
+    <div> 
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>@item.employerCompanyId</td>
+                <td>@item.employerName</td>
+                <td>@item.employerLastName</td>
+                
+            }
+
+        </tr>
+    </div>
+</body>
+</html>

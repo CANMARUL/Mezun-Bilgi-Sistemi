@@ -1,0 +1,65 @@
+﻿@using EntityLayer.Concrete
+@model List<Register>
+@{
+    ViewBag.Title = "MezunBilgileri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<body>
+    <div class="container">
+        <h1>Mezun Bilgileri</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="tablo">
+                    <th>İsim</th>
+                    <th>Soyisim</th>
+                    <th>E-mail</th>
+                    <th>Şifre</th>
+                    <th>Sil</th>
+                    <th>Bilgileri Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr >
+                        <td>@item.registerName</td>
+                        <td>@item.resigterLastName</td>
+                        <td>@item.registerEmail</td>
+                        <td>@item.registerPassword</td>
+                        <td><a href="/Admin/RegisterDelete/@item.registerId" class="btn btn-danger">Sil</a></td>
+                        <td><a href="/Admin/UpdateRegister/@item.registerId" class="btn btn-warning">Bilgileri Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a href="/AdminLogin/Logout" class="btn btn-warning">Çık</a>
+</body>
+
+<style>
+    body {
+        background-color: #9BABB8;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    table {
+        margin-bottom: 30px;
+        color: #00ffff
+    }
+
+    .btn {
+        margin-right: 5px;
+    }
+    
+</style>

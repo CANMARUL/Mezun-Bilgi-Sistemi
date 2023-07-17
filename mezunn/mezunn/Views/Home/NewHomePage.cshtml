@@ -1,0 +1,169 @@
+﻿@model EntityLayer.Concrete.Register
+
+@{
+    Layout = null;
+    var message = Request.QueryString["message"];
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mezun Bilgi Sistemi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+
+            nav a {
+                margin: 10px;
+                color: #333;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+        main {
+            margin: 20px;
+        }
+
+        .hero {
+            background-image: url("background.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+            .hero h2 {
+                font-size: 36px;
+                margin: 0;
+            }
+
+            .hero p {
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+        .login-register {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+            .login-register a {
+                margin: 10px;
+                padding: 10px 20px;
+                background-color: #333;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 4px;
+            }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        body {
+            background-color: #9BABB8;
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+        }
+
+        .bx-wrapper {
+            max-width: 800px !important
+        }
+        .avatar {
+            position: absolute;
+            top: -18px;
+            left: 50px;
+           
+        }
+            .avatar img {
+                max-width: 40px !important
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mezun Bilgi Sistemi</h1>
+    </header>
+
+    <nav>
+        <a href="/Home/Hakkımzıda">Hakkımızda</a>
+        <a href="/Home/NewIsIlanları"> İş İlanları</a>
+        
+        <div> @Session["Kullanici"].ToString() - @message</div>
+
+    </nav>
+    <main>
+        <head>
+            <meta charset="utf-8">
+            <title>Responsive jQuery Slider - bxSlider</title>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.css">
+        </head>
+        <h1> </h1>
+        <ul class="bxslider">
+            <li><img src="https://cdn.pixabay.com/photo/2016/11/19/16/52/dawn-1840298_1280.jpg" /></li>
+            <li><img src="https://cdn.pixabay.com/photo/2017/09/02/11/04/adult-education-2706977_1280.jpg" /></li>
+            <li><img src="https://cdn.pixabay.com/photo/2021/12/02/16/46/graduation-6840941_1280.png" /></li>
+        </ul>
+    </main>
+
+    <main>
+        <div class="hero">
+
+
+        </div>
+
+
+        <div class="login-register">
+
+
+            <a>@Session["Kullanici"].ToString() </a>
+            <a href="/Home/HomePage" class="btn btn-danger"> Çıkış yap</a>
+            <div class="avatar">
+                <img src="data:image/png;base64,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" alt="Avatar">
+            </div>
+
+        </div>
+    </main>
+    <script>
+        $(document).ready(function () {
+            $('.bxslider').bxSlider();
+        });
+    </script>
+
+</body>
+</html>
+
+
